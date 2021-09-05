@@ -1,3 +1,4 @@
+// Bài tập từ 11 - 33
 // Bài tập 21-33
 
 // 21. Cho một mảng là một tập các số, tính tổng tất cả các số của mảng này?
@@ -44,7 +45,7 @@
 // 23. Cho một mảng là một tập các số nguyên, tìm số có tần suất xuất hiện nhiều nhất?
 // VD: a = [1,2,3,4,5,6,7,8,9,9,9,8,7,6,5,4,3,2,1] .Output: 9
 
-// let numbers = [2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 8, 7, 6, 5, 4, 3, 2, 10];
+// let numbers = [12, 33, 44, 5, 26, 37, 78, 9, 9, 59, 8, 67, 6, 5, 4, 3, 2, 10];
 
 // let counts = {};
 
@@ -54,9 +55,35 @@
 // }
 // console.log(counts);
 // // lấy ra các số
-// console.log(Object.keys(counts));
-// // log ra số lần xuất hiện
-// console.log(counts[2], counts[3], counts[4], counts[5], counts[6], counts[7], counts[8], counts[9], counts[10]);
+// let maxFeq2 = 0
+// let value2
+// Object.keys(counts).forEach(k => {
+//   console.log(k);
+//   let v = counts[k]
+//   if (maxFeq2 < v) {
+//     maxFeq2 = v
+//     value2 = k
+//   }
+// })
+// console.log(maxFeq2, value2);
+
+// let numbers = [2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 8, 7, 6, 5, 4, 3, 2, 10];
+
+// let maxFeq = 0
+// let value 
+// for (let i = 0; i < numbers.length; i++) {
+//   let count = 0
+//     for (let j = 0; j < numbers.length; j++) {
+//      if (numbers[i] === numbers[j]) {
+//         count ++
+//      }
+//     }
+//     if (count > maxFeq) {
+//       maxFeq = count
+//       value = numbers[i]
+//     }
+// }
+// console.log(maxFeq, value);
 
 // 24. Cho một mảng là một tập các số nguyên dương, lọc ra một bảng b gồm tất cả các số là số nguyên tố? (Dùng filter)
 // VD: a = [1,2,3,2,3,4,6,7] .Output: b=[2,3,2,3,7]
@@ -142,13 +169,17 @@ let students = [
 //     }]
 
 // sửa firstName thành chuẩn với ký tự đầu viết hoa và sau viết thường
-function capitalizeFirstLetter(students) {
-  students.charAt(0).toUpperCase() + students.slice(1).toLowerCase()
-} 
+let capitalize = input => input.charAt(0).toUpperCase() + input.slice(1).toLowerCase()
+
+let capitalizeFirstLetter= (name) => {
+    let listWords = name.split(' ')
+    return listWords.map(word => capitalize(word)).join(' ')
+}
+
 
 let fixNames = students.map((student) => {
-    student.firstName = student.firstName.charAt(0).toUpperCase() + student.firstName.slice(1).toLowerCase()
-    student.lastName = student.lastName.charAt(0).toUpperCase() + student.lastName.slice(1).toLowerCase()
+    student.firstName = capitalizeFirstLetter(student.firstName)
+    student.lastName = capitalizeFirstLetter(student.lastName)
     return student
 })
 console.log(fixNames);
@@ -159,23 +190,6 @@ let nameHasLetterA = fixNames.filter((student) => {
   }
 })
 console.log(nameHasLetterA);
-
-// sửa lastname về chuẩn với ký tự đầu viết hoa và sau viết thường
-
-// let splitStrs = students.map(function (student) {
-//     return student.lastName.toLowerCase().split(' ')
-// })
-
-// // console.log(splitStrs);
-
-// let adjustLastNames = splitStrs.map(function (splitStr) {
-//     // console.log(splitStr);
-//     for (var i = 0; i < splitStr.length; i++) {
-//     splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1)
-//     }
-//     return splitStr.join(' ')
-// })
-// console.log(adjustLastNames);
 
 
 // 28. Cho một mảng là một tập hợp các học viên trong lớp REACTJS, mảng là một tập hợp object của học viên gồm 3 thông tin: id, firstName, lastName, và age. Hãy tìm tất cả học sinh cá biệt của lớp biết rằng học sinh cá biệt có họ là “Do”.
@@ -443,6 +457,12 @@ console.log(nameHasLetterA);
 // 16. Viết chương trình lấy  id name của fb.
 // VD: “https://www.facebook.com/ngothucdat”, output: “ngothucdat”
 
+// let url = 'https://www.facebook.com/ngothucdat?ajsgdha/sdcxvfc'
+
+// let id = url.slice(url.lastIndexOf('facebook.com/') +  'facebook.com/'.length, url.indexOf('?'))
+
+// console.log(id);
+
 // 17.  Viết hàm số tính min, max của 3 số?
 // VD: min(2,4,7) => output: 7
 
@@ -504,5 +524,7 @@ console.log(nameHasLetterA);
 
 // console.log(sum(9));
 // 20. [Ignore] Viết 1 hàm chuẩn hóa so sánh của một string, và trả về Xâu chuẩn. Xâu chuẩn là sâu không tồn tại các dấu cách(space) và tab and enter trong value(value là giá trị trong "{value}")
-// VD: `computer =            " ngan 98    " AND class = "  REACTJS2002 "`
+// VD: `computer =            " ngan 98    " AND class = "  REACTJS2002 " OR name ='hieu'`
 // Output: `computer = "ngan 98" AND class = "REACTJS2002"`
+
+
